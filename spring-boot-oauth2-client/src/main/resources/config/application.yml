@@ -1,0 +1,25 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: sior-wssb-userinfo-change
+  thymeleaf:
+    enable-spring-el-compiler: true
+    encoding: UTF-8
+    mode: HTML
+server:
+  servlet:
+    session:
+      timeout: 30
+  tomcat:
+    min-spare-threads: 200
+    max-threads: 1000
+    max-connections: 5000
+    accept-count: 400
+pagehelper:
+  offset-as-page-num: true
+  reasonable: true
+  page-size-zero: true
+  support-methods-arguments: true
+logging:
+  config: classpath:logback-spring.xml    # 指定日志配置文件

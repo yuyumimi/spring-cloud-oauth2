@@ -1,0 +1,39 @@
+auth-server-url: http://localhost:8000 # 授权服务地址
+server:
+  port: 9000
+  servlet:
+    context-path: /csibiz
+spring:
+  thymeleaf:
+    cache: false
+logging:
+  level:
+    cn.com.capinfo: debug #包含mapper包可以打印mybatis的sql
+sior:
+  wssb:
+    qr-security:
+      loginUrl: https://t200renzheng.zhengtoon.com/p/login/login.html?client_id=&redirect_uri=&state=&response_type=&scope=
+      tokenUrl: https://t200renzheng.zhengtoon.com/api/oauth/getAccessToken
+      UserInfoUrl: https://t200renzheng.zhengtoon.com/api/info/getUserInfo
+  running-date:
+    enable: true
+    ignore-url:
+    start-day: 5
+    end-day: 24
+    start-hour: 6
+    end-hour: 24
+
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+      scope: app
+      access-token-uri: ${auth-server-url}/oauth/token
+      user-authorization-uri: ${auth-server-url}/oauth/authorize
+      use-current-uri: true
+      registered-redirect-uri: ${auth-server-url}/oauth/authorize
+    resource:
+      token-info-uri: ${auth-server-url}/oauth/check_token #检查令牌
+    sso:
+      login-path: /sso/login
